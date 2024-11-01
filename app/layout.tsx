@@ -3,20 +3,35 @@ import localFont from "next/font/local";
 import React from "react";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const inter = localFont({
+  src: "./fonts/InterVF.ttf",
+  variable: "--font-inter",
+  weight: "100 200 300 400 500 600 700 800",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+// TODO: FUENTE DE GOOGLE FONT:
+// primer la descago de google font
+// luego la guardo en fonts
+// la declaro con una constnate apuntando a la ruta
+// le doy un nombre de variable
+// la pongo en el body class name y enel body del global
+// si poingo className es la fuente por defecto
+// luego delcaro las fuentes en el tailwindcss en fontFamily:
+// agrego un var(--font-nombreVariable)
+
+const spaceGrotesk = localFont({
+  src: "./fonts/SpaceGroteskVF.ttf",
+  variable: "--font-space-grotesk",
+  weight: "300 400 500 700",
 });
 
 export const metadata: Metadata = {
   title: "DevFlow",
-  description: "A better version of Stack Overflow",
+  description:
+    "A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.",
+  icons: {
+    icon: "/images/site-logo.svg",
+  }
 };
 
 export default function RootLayout({
@@ -27,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.className} ${spaceGrotesk.variable}  antialiased`}
       >
         {children}
       </body>

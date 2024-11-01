@@ -1,5 +1,11 @@
-export default function Home() {
+function Home() {
   return (
-    <h1 className=" text-3xl font-black text-white">Welcome a next js</h1>
+    <>
+      <h1 className="h1-bold">Tailwind Css is Fun</h1>
+      <h1 className="h1-bold font-space-grotesk">Tailwind Css is Fun</h1>
+     
+    </>
   );
 }
+
+export default Home;
