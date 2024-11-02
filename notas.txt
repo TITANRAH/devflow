@@ -198,3 +198,14 @@ export function ModeToggle() {
     </DropdownMenu>
   )
 }
+
+
+TODO: LOS GRUPOS DE RUTAS SE REPRESETAN CON PARENTESIS Y SU LAYOUT 
+
+(root)
+(auth)
+
+
+TODO: NEXTAUTH INSTALACION
+
+https://authjs.dev/getting-started/installation?framework=Next.js
