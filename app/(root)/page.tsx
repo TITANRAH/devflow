@@ -1,3 +1,5 @@
+import { auth, signOut } from "@/auth";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,8 +8,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import ROUTES from "@/constants/routes";
 
-function Home() {
+async function Home() {
+  const session = await auth();
+
+  console.log(session);
+
   return (
     <main>
       <DropdownMenu>
@@ -21,6 +28,17 @@ function Home() {
           <DropdownMenuItem>Subscription</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <form
+        className="h1-bold pt-[100px]"
+        action={async () => {
+          "use server";
+
+          await signOut({ redirectTo: ROUTES.SIGN_IN });
+        }}
+      >
+        <Button className="rounded-xl" type="submit">Log out</Button>
+      </form>
     </main>
   );
 }
