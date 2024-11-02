@@ -109,3 +109,92 @@ LUEGO EN EL ARCHIVO DE .vscode -> settings.json
     },
     "typescript.tsdk": "node_modules/typescript/lib"
 }
+
+
+//TODO: NEXTTHEME NO SOPORTA REACT 19
+
+HACEMOES ESTO PARA LIDEAR CON ELLO EN EL PACKAGE JSON
+
+ "packageManager": "npm@10.7.0",
+  "overrides": {
+    "react":"$react",
+    "react-dom":"$react"
+  }
+
+LUEGO DE HACERLO INSTALAMOS NUEVAMENTE npm install next-themes
+
+// TODO: INSTALAR SHADCN
+
+npx shadcn@latest init
+
+Ok to proceed? (y) y
+✔ Preflight checks.
+✔ Verifying framework. Found Next.js.
+✔ Validating Tailwind CSS.
+✔ Validating import alias.
+✔ Which style would you like to use? › New York
+✔ Which color would you like to use as the base color? › Slate
+✔ Would you like to use CSS variables for theming? … no / yes
+✔ Writing components.json.
+✔ Checking registry.
+✔ Updating tailwind.config.ts
+✔ Updating app/globals.css
+  Installing dependencies.
+
+It looks like you are using React 19. 
+Some packages may fail to install due to peer dependency issues (see https://ui.shadcn.com/react-19).
+
+✔ How would you like to proceed? › Use --force
+✔ Installing dependencies.
+✔ Created 1 file:
+  - lib/utils.ts
+
+  instalar componente 
+
+  npx shadcn@latest add dropdown-menu
+  npx shadcn@latest add button 
+
+// TODO: COMPONENTE SWITCH PARA EL TOGLLE DEL MODO DARK 
+
+https://ui.shadcn.com/docs/dark-mode/next
+
+"use client"
+
+import * as React from "react"
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
+
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+export function ModeToggle() {
+  const { setTheme } = useTheme()
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
