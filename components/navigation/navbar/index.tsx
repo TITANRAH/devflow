@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Theme  from "@/components/navigation/navbar/Theme";
+import Theme from "@/components/navigation/navbar/Theme";
 
+import MobileNavigation from "./MobileNavigation";
 
 function Navbar() {
   return (
@@ -20,7 +21,9 @@ function Navbar() {
       <p>Global Search</p>
 
       <div className="flex-between gap-5">
-        <Theme/>
+        <Theme />
+
+        <MobileNavigation />
       </div>
     </nav>
   );
